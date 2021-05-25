@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #333333;
+    color: white;
+    font-family: 'Allerta Stencil', sans-serif;
+}
+
+#timer {
+    font-size: 3rem;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    position: relative;
+}
+
+.info {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 20%;
+    right: 5px;
+    color: black;
+}
+
+input,
+button {
+    font-size: 2rem;
+    border: none;
+}
+
+button {
+    cursor: pointer;
+    display: block;
+}
+
+#start, #stop {
+    border: black 1px solid;
+    padding: .5rem;
+}
+
+.all-button, .all-input {
+    display: flex;
+    margin: .5rem;
+}
+
+input {
+    padding: 0.2rem;
+    border: black 1px solid;
+    padding-left: .4rem;
+}
+
+#stop {
+    background: rgb(255, 63, 63);
+    color: white;
+}
+
+#start {
+    background: rgb(45, 255, 18);
+    color: black;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 3rem;
+}
