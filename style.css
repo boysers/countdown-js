@@ -10,10 +10,6 @@ body {
     font-family: 'Allerta Stencil', sans-serif;
 }
 
-#timer {
-    font-size: 3rem;
-}
-
 .container {
     height: 100vh;
     display: flex;
@@ -45,7 +41,7 @@ button {
     display: block;
 }
 
-#start, #stop {
+.all-button button {
     border: black 1px solid;
     padding: .5rem;
 }
@@ -61,17 +57,26 @@ input {
     padding-left: .4rem;
 }
 
-#stop {
-    background: rgb(255, 63, 63);
-    color: white;
-}
-
 #start {
     background: rgb(45, 255, 18);
     color: black;
+    display: block;
+}
+
+#stop {
+    background: rgb(255, 63, 63);
+    color: white;
+    display: none;
+}
+
+#pause {
+    background: rgb(255, 174, 0);
+    color: black;
+    display: none;
 }
 
 h2 {
     font-weight: 400;
     font-size: 3rem;
+    text-align: center;
 }
