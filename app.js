@@ -1,9 +1,36 @@
-const start = document.getElementById("start");
+const inputAll = document.querySelectorAll("input");
+function inputOff(){
+  for (let i = 0; i < inputAll.length; i++) {
+    inputAll[i].setAttribute("readonly", true);
+  }
+}
 
+function inputOn() {
+  for (let i = 0; i < inputAll.length; i++) {
+    inputAll[i].readOnly = false;
+  }
+}
+
+class Display {
+  constructor(stop, start, pause) {
+    this.stop = stop;
+    this.start = start;
+    this.pause = pause;
+  }
+}
+
+diplayOff = new Display("none","block","none");
+function displayButton() {
+  document.querySelector("#stop").style.display = diplayOff.stop
+  document.querySelector("#start").style.display = diplayOff.start
+  document.querySelector("#pause").style.display = diplayOff.pause
+}
+displayButton()
+
+const start = document.getElementById("start");
 start.addEventListener("click", function() {
   const pause = document.getElementById("pause");
   const stop = document.getElementById("stop");
-  const continuer = document.getElementById("continuer");
 
   const inputMin = document.getElementById("inputMin");
   let min = parseInt(inputMin.value);
@@ -14,12 +41,10 @@ start.addEventListener("click", function() {
   let convMin = min * 60;
   let timerSec = convMin + sec;
 
-  start.style.display = "none";
-  stop.style.display = "block";
-  pause.style.display = "block";
+  diplayOff = new Display("block","none","block");
+  displayButton()
 
-  inputMin.setAttribute("readonly", true);
-  inputSec.setAttribute("readonly", true);
+  inputOff()
 
   if (isNaN(sec) || isNaN(min)) {
     alert("toto");
@@ -28,6 +53,7 @@ start.addEventListener("click", function() {
 
     function updateTimer() {
       if (timerSec >= 0) {
+        timerSec--;
         
         let minutes = Math.floor(timerSec / 60);
         let secondes = timerSec % 60;
@@ -35,7 +61,6 @@ start.addEventListener("click", function() {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         secondes = secondes < 10 ? "0" + secondes : secondes;
         
-        timerSec--;
 
         inputMin.value = minutes;
         inputSec.value = secondes;
@@ -44,13 +69,14 @@ start.addEventListener("click", function() {
           const alarme = new Audio("ah.mp3");
           alarme.volume = .7;
           alarme.play();
-          start.style.display = "block";
-          stop.style.display = "none";
-          pause.style.display = "none";
-          inputMin.readOnly = false;
-          inputSec.readOnly = false;
-          inputMin.value = "00";
+
+          inputMin.value = "05";
           inputSec.value = "00";
+
+          diplayOff = new Display("none","block","none");
+          displayButton()
+
+          inputOn()
         }, 0);
         stopInterval();
       }
@@ -62,22 +88,23 @@ start.addEventListener("click", function() {
 
     pause.addEventListener("click", function() {
       stopInterval();
-      start.style.display = "block";
-      stop.style.display = "block";
-      pause.style.display = "none";
-      inputMin.setAttribute("readonly", true);
-      inputSec.setAttribute("readonly", true);
+      inputOff()
+
+      diplayOff = new Display("block","block","none");
+      displayButton()
+
     });
 
     stop.addEventListener("click", function() {
       stopInterval();
+
       inputMin.value = "05";
       inputSec.value = "00";
-      start.style.display = "block";
-      stop.style.display = "none";
-      pause.style.display = "none";
-      inputMin.readOnly = false;
-      inputSec.readOnly = false;
+
+      diplayOff = new Display("none","block","none");
+      displayButton()
+
+      inputOn()
     });
   }
 });
