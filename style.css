@@ -22,6 +22,10 @@ body {
     position: relative;
 }
 
+input {
+    width: 6rem;
+}
+
 .info {
     font-size: 1.5rem;
     position: absolute;
@@ -49,6 +53,7 @@ button {
 .all-button, .all-input {
     display: flex;
     margin: .5rem;
+    
 }
 
 input {
