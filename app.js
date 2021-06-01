@@ -11,6 +11,11 @@ function inputOn() {
   }
 }
 
+function inputDefault() {
+  inputMin.value = "05";
+  inputSec.value = "00";
+}
+
 class Display {
   constructor(stop, start, pause) {
     this.stop = stop;
@@ -19,57 +24,72 @@ class Display {
   }
 }
 
-diplayOff = new Display("none", "block", "none");
 function displayButton() {
   document.querySelector("#stop").style.display = diplayOff.stop;
   document.querySelector("#start").style.display = diplayOff.start;
   document.querySelector("#pause").style.display = diplayOff.pause;
 }
+
+diplayOff = new Display("none", "block", "none");
 displayButton();
 
-const inputMin = document.getElementById("inputMin");
-let min = parseInt(inputMin.value);
+const start = document.getElementById("start");
+start.addEventListener("click", function () {
+  diplayOff = new Display("block", "none", "block");
+  displayButton();
+  inputOff();
+  startTimer();
+});
 
-const inputSec = document.getElementById("inputSec");
-let sec = parseInt(inputSec.value);
+function startTimer() {
+  const inputMin = document.getElementById("inputMin");
+  let min = parseInt(inputMin.value);
 
-let convMin = min * 60;
-let timerSec = convMin + sec;
+  const inputSec = document.getElementById("inputSec");
+  let sec = parseInt(inputSec.value);
 
-const timerInterval = setInterval(updateTimer, 1000);
+  let convMin = min * 60;
+  let timerSec = convMin + sec;
 
-function updateTimer() {
-  if (timerSec >= 0) {
-    timerSec--;
+  timerSec--
 
-    let minutes = Math.floor(timerSec / 60);
-    let secondes = timerSec % 60;
+  const compteur = setInterval(function () {
+    if (timerSec > 0) {
+      let minutes = Math.floor(timerSec / 60);
+      let secondes = timerSec % 60;
+      console.log(timerSec);
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    secondes = secondes < 10 ? "0" + secondes : secondes;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      secondes = secondes < 10 ? "0" + secondes : secondes;
 
-    inputMin.value = minutes;
-    inputSec.value = secondes;
-  } else {
-    setTimeout(function () {
+      inputMin.value = minutes;
+      inputSec.value = secondes;
+
+      timerSec--;
+    } else {
       const alarme = new Audio("ah.mp3");
       alarme.volume = 0.7;
       alarme.play();
 
-      inputMin.value = "05";
-      inputSec.value = "00";
+      inputDefault();
 
       diplayOff = new Display("none", "block", "none");
       displayButton();
 
       inputOn();
-    }, 0);
-    stopInterval();
-  }
 
-  function stopInterval() {
-    clearInterval(timerInterval);
-  }
+      stopInterval(compteur);
+    }
+  }, 1000);
+
+  const stop = document.getElementById("stop");
+  stop.addEventListener("click", function () {
+    diplayOff = new Display("none", "block", "none");
+    displayButton();
+    inputDefault();
+    inputOn();
+    stopInterval();
+  });
 
   const pause = document.getElementById("pause");
   pause.addEventListener("click", function () {
@@ -80,18 +100,9 @@ function updateTimer() {
     displayButton();
   });
 
-  const stop = document.getElementById("stop");
-  stop.addEventListener("click", function () {
-    stopInterval();
-
-    inputMin.value = "05";
-    inputSec.value = "00";
-
-    diplayOff = new Display("none", "block", "none");
-    displayButton();
-
-    inputOn();
-  });
+  function stopInterval() {
+    clearInterval(compteur);
+  }
 }
 
 // function setTimer() {
@@ -100,19 +111,9 @@ function updateTimer() {
 //   } else {}
 // }
 
-const start = document.getElementById("start");
-start.addEventListener("click", function () {
-  diplayOff = new Display("block", "none", "block");
-  displayButton();
-
-  setTimer();
-
-  inputOff();
-});
-
 /* setTimeout(function () {
   for (let i = 0; i < 2; i++) {
-    caca = document.querySelector("body").lastElementChild;
-    caca.remove();
+    toto = document.querySelector("body").lastElementChild;
+    toto.remove();
   }
 }, 0); */

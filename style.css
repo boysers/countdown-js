@@ -65,19 +65,16 @@ input {
 #start {
     background: rgb(45, 255, 18);
     color: black;
-    display: block;
 }
 
 #stop {
     background: rgb(255, 63, 63);
     color: white;
-    display: none;
 }
 
 #pause {
     background: rgb(255, 174, 0);
     color: black;
-    display: none;
 }
 
 h2 {
