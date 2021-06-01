@@ -51,13 +51,12 @@ function startTimer() {
   let convMin = min * 60;
   let timerSec = convMin + sec;
 
-  timerSec--
+  timerSec--;
 
   const compteur = setInterval(function () {
     if (timerSec > 0) {
       let minutes = Math.floor(timerSec / 60);
       let secondes = timerSec % 60;
-      console.log(timerSec);
 
       minutes = minutes < 10 ? "0" + minutes : minutes;
       secondes = secondes < 10 ? "0" + secondes : secondes;
