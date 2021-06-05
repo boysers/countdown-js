@@ -155,7 +155,6 @@ display.start.addEventListener("click", startTimer);
 display.pause.addEventListener("click", pauseTimer);
 
 for (let wrapper of document.querySelectorAll(".input")) {
-  console.log(wrapper);
   wrapper.addEventListener("click", (event) => {
     if (event.target.nodeName == "SPAN") {
       let input = event.target.parentElement.firstElementChild;
