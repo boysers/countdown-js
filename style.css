@@ -1,84 +1,102 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #333333;
-    color: white;
-    font-family: 'Allerta Stencil', sans-serif;
+  background: #333333;
+  color: white;
+  font-family: "Allerta Stencil", sans-serif;
 }
 
 .container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .input {
-    position: relative;
+  position: relative;
 }
 
 input {
-    width: 6rem;
+  width: 6rem;
+}
+
+.input:first-child input {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.input:last-child input {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.input:first-child input.error {
+  box-shadow: 0px 0 10px 2px rgb(168, 54, 54);
+}
+
+.input:last-child input.error {
+  box-shadow: 0px 0 10px 2px rgb(168, 54, 54);
 }
 
 .info {
-    font-size: 1.5rem;
-    position: absolute;
-    top: 20%;
-    right: 5px;
-    color: black;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 20%;
+  right: 5px;
+  color: black;
 }
 
 input,
 button {
-    font-size: 2rem;
-    border: none;
+  font-size: 2rem;
+  border: none;
 }
 
 button {
-    cursor: pointer;
-    display: block;
+  cursor: pointer;
+  display: block;
 }
 
 .all-button button {
-    border: black 1px solid;
-    padding: .5rem;
+  border: black 1px solid;
+  padding: 0.5rem;
 }
 
-.all-button, .all-input {
-    display: flex;
-    margin: .5rem;
-    
+.all-button,
+.all-input {
+  display: flex;
+  margin: 0.5rem;
 }
 
 input {
-    padding: 0.2rem;
-    border: black 1px solid;
-    padding-left: .4rem;
+  padding: 0.2rem;
+  border: black 1px solid;
+  padding-left: 0.4rem;
 }
 
 #start {
-    background: rgb(45, 255, 18);
-    color: black;
+  background: rgb(45, 255, 18);
+  color: black;
 }
 
 #stop {
-    background: rgb(255, 63, 63);
-    color: white;
+  background: rgb(255, 63, 63);
+  color: white;
 }
 
 #pause {
-    background: rgb(255, 174, 0);
-    color: black;
+  background: rgb(255, 174, 0);
+  color: black;
 }
 
 h2 {
-    font-weight: 400;
-    font-size: 3rem;
-    text-align: center;
+  font-weight: 400;
+  font-size: 3rem;
+  text-align: center;
 }
