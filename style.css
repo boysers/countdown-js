@@ -100,3 +100,27 @@ h2 {
   font-size: 3rem;
   text-align: center;
 }
+
+.github-link {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 15px;
+  float: right;
+}
+
+.github-link span {
+  padding-left: 5px;
+  color: white;
+}
+
+.github-link:hover span {
+  color: rgb(95, 95, 233);
+}
+
+.github-link img {
+  height: 20px;
+}
