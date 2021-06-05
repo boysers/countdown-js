@@ -186,9 +186,3 @@ window.addEventListener("keyup", (event) => {
   if (event.code == "Space" && compteurIsStart) pauseTimer();
   else if (event.code == "Space" && compteurIsPause) startTimer();
 });
-/* setTimeout(function () {
-  for (let i = 0; i < 2; i++) {
-    toto = document.querySelector("body").lastElementChild;
-    toto.remove();
-  }
-}, 0); */
